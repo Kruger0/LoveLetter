@@ -36,13 +36,13 @@
 </head>
 <body>
 
-    <h1>Amorzinho da minha vida!</h1>
-    <div id="contador"></div>
+    <h1>Nosso Amor!</h1>
+    <div id="contador">Calculando...</div> <!-- Texto inicial antes do cálculo -->
 
-    <!-- Coloque sua imagem aqui -->
-    <img src="sources/imagem.png" alt="Tuchucos">
+    <!-- Imagem renomeada para image1.png -->
+    <img src="image1.png" alt="Uma foto especial de nós dois">
 
-    <p>Obrigado por tudo que voçe fez, tudo que voçe faz, e tudo que voçe ainda vai fazer! Te amo, meu amor <3</p>
+    <p>Amor, cada dia ao seu lado é uma nova aventura. Estou tão feliz por estarmos juntos!</p>
 
     <script>
         const dataInicio = new Date('2024-05-05');
@@ -50,6 +50,12 @@
         function atualizarContador() {
             const hoje = new Date();
             const diff = hoje - dataInicio;
+
+            // Verifica se a data de início já passou
+            if (diff < 0) {
+                document.getElementById('contador').innerText = "Estamos prestes a começar nossa jornada!";
+                return; // Sai da função se a data ainda não chegou
+            }
 
             const segundos = Math.floor(diff / 1000);
             const minutos = Math.floor(segundos / 60);
@@ -67,3 +73,10 @@
                 ${minutosRestantes} minutos e ${segundosRestantes} segundos juntos!
             `;
         }
+
+        setInterval(atualizarContador, 1000); // Atualiza o contador a cada segundo
+        atualizarContador(); // Chama a função imediatamente para inicializar
+    </script>
+
+</body>
+</html>
