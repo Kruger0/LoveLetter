@@ -36,30 +36,34 @@
 </head>
 <body>
 
-    <h1>Nosso Amor!</h1>
+    <h1>Amorzinho da minha vida!</h1>
     <div id="contador"></div>
 
-    <img src="source/imagem.jpg" alt="Uma foto especial de nós dois">
+    <!-- Coloque sua imagem aqui -->
+    <img src="sources/imagem.png" alt="Tuchucos">
 
-    <p>Amor, cada dia ao seu lado é uma nova aventura. Estou tão feliz por estarmos juntos!</p>
+    <p>Obrigado por tudo que voçe fez, tudo que voçe faz, e tudo que voçe ainda vai fazer! Te amo, meu amor <3</p>
 
     <script>
         const dataInicio = new Date('2024-05-05');
 
         function atualizarContador() {
             const hoje = new Date();
-            const diff = Math.floor((hoje - dataInicio) / (1000 * 60 * 60 * 24));
+            const diff = hoje - dataInicio;
 
-            if (diff >= 0) {
-                document.getElementById('contador').innerText = `${diff} dias juntos!`;
-            } else {
-                document.getElementById('contador').innerText = "Estamos prestes a começar nossa jornada!";
-            }
+            const segundos = Math.floor(diff / 1000);
+            const minutos = Math.floor(segundos / 60);
+            const horas = Math.floor(minutos / 60);
+            const dias = Math.floor(segundos / (60 * 60 * 24));
+            const meses = Math.floor(dias / 30); // Aproximando meses como 30 dias
+
+            const diasRestantes = dias % 30; // Dias restantes após calcular meses
+            const horasRestantes = horas % 24; // Horas restantes após calcular dias
+            const minutosRestantes = minutos % 60; // Minutos restantes após calcular horas
+            const segundosRestantes = segundos % 60; // Segundos restantes após calcular minutos
+
+            document.getElementById('contador').innerText = `
+                ${meses} meses, ${diasRestantes} dias, ${horasRestantes} horas, 
+                ${minutosRestantes} minutos e ${segundosRestantes} segundos juntos!
+            `;
         }
-
-        setInterval(atualizarContador, 1000);
-        atualizarContador();
-    </script>
-
-</body>
-</html>
