@@ -42,7 +42,7 @@
 
     <div id="contador">Calculando o tempo de amor...</div>
 
-    <p>Oi gatinha!</p>
+    <p>Amor, cada dia ao seu lado é uma nova aventura. Estou tão feliz por estarmos juntos!</p>
 
     <script>
         const startDate = new Date('2024-05-05'); // Data de início
@@ -81,16 +81,16 @@
             // Monta o texto do contador
             let counterText = "Juntos há ";
             if (years > 0) {
-                yeaText += `${years} ${years === 1 ? 'ano' : 'anos'}, `;
+                counterText += `${years} ${years === 1 ? 'ano' : 'anos'}, `;
             }
-            monText += `${months} ${months === 1 ? 'mês' : 'meses'}, `;
-            dayText += `${days} ${days === 1 ? 'dia' : 'dias'}, `;
-            houText += `${remainHou} ${remainHou === 1 ? 'hora' : 'horas'}, `;
-            minText += `${remainMin} ${remainMin === 1 ? 'minuto' : 'minutos'} e `;
-            secText += `${remainSec} ${remainSec === 1 ? 'segundo' : 'segundos'}!`;
+            counterText += `${months} ${months === 1 ? 'mês' : 'meses'}, `;
+            counterText += `${days} ${days === 1 ? 'dia' : 'dias'}, `;
+            counterText += `${remainHou} ${remainHou === 1 ? 'hora' : 'horas'}, `;
+            counterText += `${remainMin} ${remainMin === 1 ? 'minuto' : 'minutos'} e `;
+            counterText += `${remainSec} ${remainSec === 1 ? 'segundo' : 'segundos'}!`;
 
             // Atualiza o texto do contador
-            document.getElementById('contador').innerText = "bongus";
+            document.getElementById('contador').innerText = counterText;
         }
 
         setInterval(updateCounter, 1000); // Atualiza o contador a cada segundo
