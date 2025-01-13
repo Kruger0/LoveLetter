@@ -49,30 +49,34 @@
 
         function updateCounter() {
             const today = new Date();
-
-            // Calcula a diferença de anos, meses e dias
             let years = today.getFullYear() - startDate.getFullYear();
             let months = today.getMonth() - startDate.getMonth();
             let days = today.getDate() - startDate.getDate();
 
-            // Ajusta os valores de meses e dias
-            if (days < 0) {
-                months -= 1;
-                const previousMonth = new Date(today.getFullYear(), today.getMonth(), 0);
-                days += previousMonth.getDate();
-            }
+            // Corrige a contagem de meses e anos
             if (months < 0) {
-                years -= 1;
+                years--;
                 months += 12;
             }
+            if (days < 0) {
+                const previousMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+                days += previousMonth.getDate();
+                months--;
+            }
 
-            // Calcula horas, minutos e segundos
+            // Calcula as horas, minutos e segundos
             const diff = today - startDate;
             const sec = Math.floor(diff / 1000); // Total de segundos
             const min = Math.floor(sec / 60);   // Total de minutos
             const remainHou = Math.floor((sec / 3600) % 24); // Horas restantes
             const remainMin = min % 60;         // Minutos restantes após horas
             const remainSec = sec % 60;         // Segundos restantes após minutos
+
+            // Verifica se já passou algum tempo desde a data de início
+            if (years <= 0 && months <= 0 && days <= 0) {
+                document.getElementById('contador').innerText = "Ainda não começou!";
+                return;
+            }
 
             // Monta o texto do contador
             let counterText = "Juntos há ";
