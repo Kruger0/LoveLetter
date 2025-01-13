@@ -72,19 +72,17 @@
             const remainMin = min % 60;         // Minutos restantes após horas
             const remainSec = sec % 60;         // Segundos restantes após minutos
 
-            // Monta o texto do contador
+           // Monta o texto do contador
             let counterText = "Juntos há ";
             if (years > 0) {
                 counterText += `${years} ${years === 1 ? 'ano' : 'anos'}, `;
             }
-            counterText += `
-                ${months} ${months === 1 ? 'mês' : 'meses'}, 
-                ${days} ${days === 1 ? 'dia' : 'dias'}, 
-                ${remainHou} ${remainHou === 1 ? 'hora' : 'horas'}, 
-                ${remainMin} ${remainMin === 1 ? 'minuto' : 'minutos'} e 
-                ${remainSec} ${remainSec === 1 ? 'segundo' : 'segundos'}!
-            `;
-
+            counterText += `${months} ${months === 1 ? 'mês' : 'meses'}, `;
+            counterText += `${days} ${days === 1 ? 'dia' : 'dias'}, `;
+            counterText += `${remainHou} ${remainHou === 1 ? 'hora' : 'horas'}, `;
+            counterText += `${remainMin} ${remainMin === 1 ? 'minuto' : 'minutos'} e `;
+            counterText += `${remainSec} ${remainSec === 1 ? 'segundo' : 'segundos'}!`;
+            
             // Atualiza o texto do contador
             document.getElementById('contador').innerText = counterText;
         }
