@@ -35,9 +35,9 @@
     </style>
 </head>
 <body>
-
+    
     <h1>Nosso Amor!</h1>
-    <div id="contador">Calculando...</div> <!-- Texto inicial antes do cálculo -->
+    <div id="contador">Juntos há...</div> <!-- Texto inicial antes do cálculo -->
 
     <!-- Imagem renomeada para image1.png -->
     <img src="image1.png" alt="Uma foto especial de nós dois">
@@ -45,38 +45,45 @@
     <p>Amor, cada dia ao seu lado é uma nova aventura. Estou tão feliz por estarmos juntos!</p>
 
     <script>
-        const dataInicio = new Date('2024-05-05');
-
-        function atualizarContador() {
-            const hoje = new Date();
-            const diff = hoje - dataInicio;
-
+        const startDate = new Date('2024-05-05');
+    
+        function updateCounter() {
+            const today = new Date();
+            const diff = today - startDate;
+            const title = "Juntos há";
+    
             // Verifica se a data de início já passou
             if (diff < 0) {
-                document.getElementById('contador').innerText = "Estamos prestes a começar nossa jornada!";
+                document.getElementById('contador').innerText = title;
                 return; // Sai da função se a data ainda não chegou
             }
-
-            const segundos = Math.floor(diff / 1000);
-            const minutos = Math.floor(segundos / 60);
-            const horas = Math.floor(minutos / 60);
-            const dias = Math.floor(segundos / (60 * 60 * 24));
-            const meses = Math.floor(dias / 30); // Aproximando meses como 30 dias
-
-            const diasRestantes = dias % 30; // Dias restantes após calcular meses
-            const horasRestantes = horas % 24; // Horas restantes após calcular dias
-            const minutosRestantes = minutos % 60; // Minutos restantes após calcular horas
-            const segundosRestantes = segundos % 60; // Segundos restantes após calcular minutos
-
+    
+            const sec = Math.floor(diff / 1000); // Total de segundos
+            const min = Math.floor(sec / 60);   // Total de minutos
+            const hou = Math.floor(min / 60);   // Total de horas
+            const day = Math.floor(hou / 24);   // Total de dias
+            const yea = Math.floor(day / 365);  // Anos (aproximando com 365 dias/ano)
+            const mon = Math.floor((day % 365) / 30); // Meses restantes (aproximando com 30 dias/mês)
+            const remainDay = day % 30;         // Dias restantes após meses
+            const remainHou = hou % 24;         // Horas restantes após dias
+            const remainMin = min % 60;         // Minutos restantes após horas
+            const remainSec = sec % 60;         // Segundos restantes após minutos
+    
+            // Atualiza o contador na página
             document.getElementById('contador').innerText = `
-                ${meses} meses, ${diasRestantes} dias, ${horasRestantes} horas, 
-                ${minutosRestantes} minutos e ${segundosRestantes} segundos juntos!
+                ${title} ${yea} ${yea === 1 ? 'ano' : 'anos'}, 
+                ${mon} ${mon === 1 ? 'mês' : 'meses'}, 
+                ${remainDay} ${remainDay === 1 ? 'dia' : 'dias'}, 
+                ${remainHou} ${remainHou === 1 ? 'hora' : 'horas'}, 
+                ${remainMin} ${remainMin === 1 ? 'minuto' : 'minutos'} e 
+                ${remainSec} ${remainSec === 1 ? 'segundo' : 'segundos'}!
             `;
         }
-
-        setInterval(atualizarContador, 1000); // Atualiza o contador a cada segundo
-        atualizarContador(); // Chama a função imediatamente para inicializar
+    
+        setInterval(updateCounter, 1000); // Atualiza o contador a cada segundo
+        updateCounter(); // Chama a função imediatamente para inicializar
     </script>
-
+    
 </body>
+    
 </html>
