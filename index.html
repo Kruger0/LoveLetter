@@ -21,7 +21,7 @@
         #contador {
             font-size: 1.5em;
             margin: 20px 0;
-            white-space: nowrap;
+            white-space: nowrap; /* Impede a quebra de linha */
         }
         img {
             max-width: 100%;
@@ -73,7 +73,7 @@
             const remainMin = min % 60;         // Minutos restantes após horas
             const remainSec = sec % 60;         // Segundos restantes após minutos
 
-           // Monta o texto do contador
+            // Monta o texto do contador
             let counterText = "Juntos há ";
             if (years > 0) {
                 counterText += `${years} ${years === 1 ? 'ano' : 'anos'}, `;
@@ -83,7 +83,7 @@
             counterText += `${remainHou} ${remainHou === 1 ? 'hora' : 'horas'}, `;
             counterText += `${remainMin} ${remainMin === 1 ? 'minuto' : 'minutos'} e `;
             counterText += `${remainSec} ${remainSec === 1 ? 'segundo' : 'segundos'}!`;
-            
+
             // Atualiza o texto do contador
             document.getElementById('contador').innerText = counterText;
         }
