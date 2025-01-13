@@ -50,4 +50,47 @@
         function updateCounter() {
             const today = new Date();
 
-            // Calcula a
+            // Calcula a diferença de anos, meses e dias
+            let years = today.getFullYear() - startDate.getFullYear();
+            let months = today.getMonth() - startDate.getMonth();
+            let days = today.getDate() - startDate.getDate();
+
+            // Ajusta os valores de meses e dias
+            if (days < 0) {
+                months -= 1;
+                const previousMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+                days += previousMonth.getDate();
+            }
+            if (months < 0) {
+                years -= 1;
+                months += 12;
+            }
+
+            // Calcula horas, minutos e segundos
+            const diff = today - startDate;
+            const sec = Math.floor(diff / 1000); // Total de segundos
+            const min = Math.floor(sec / 60);   // Total de minutos
+            const remainHou = Math.floor((sec / 3600) % 24); // Horas restantes
+            const remainMin = min % 60;         // Minutos restantes após horas
+            const remainSec = sec % 60;         // Segundos restantes após minutos
+
+            // Monta o texto do contador
+            let counterText = "Juntos há ";
+            if (years > 0) {
+                counterText += `${years} ${years === 1 ? 'ano' : 'anos'}, `;
+            }
+            counterText += `${months} ${months === 1 ? 'mês' : 'meses'}, `;
+            counterText += `${days} ${days === 1 ? 'dia' : 'dias'}, `;
+            counterText += `${remainHou} ${remainHou === 1 ? 'hora' : 'horas'}, `;
+            counterText += `${remainMin} ${remainMin === 1 ? 'minuto' : 'minutos'} e `;
+            counterText += `${remainSec} ${remainSec === 1 ? 'segundo' : 'segundos'}!`;
+
+            // Atualiza o texto do contador
+            document.getElementById('contador').innerText = counterText;
+        }
+
+        setInterval(updateCounter, 1000); // Atualiza o contador a cada segundo
+        updateCounter(); // Atualiza imediatamente ao carregar
+    </script>
+</body>
+</html>
