@@ -25,15 +25,28 @@
             white-space: nowrap;
             display: inline-block;
         }
+        .image-container {
+            width: 100%;                 /* O contêiner ocupa 100% da largura disponível */
+            max-width: 600px;            /* Tamanho máximo do contêiner */
+            margin: 0 auto;              /* Centraliza o contêiner */
+            overflow: hidden;            /* Impede que a imagem ultrapasse o contêiner */
+        }
         img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            margin-top: 20px;
+            max-width: 100%;             /* A imagem vai se ajustar à largura do contêiner */
+            height: auto;                /* A altura será ajustada automaticamente */
+            border-radius: 10px;         /* Bordas arredondadas */
+            margin-top: 20px;            /* Espaço entre a imagem e os outros elementos */
+            object-fit: cover;           /* Preenche o contêiner, pode cortar a imagem */
         }
         p {
             font-size: 1.2em;
             margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            img {
+                object-fit: contain;     /* Para telas menores, usa contain para mostrar a imagem inteira */
+            }
         }
     </style>
 </head>
@@ -41,7 +54,9 @@
     <h1>Krug e Bela</h1>
     
     <!-- Caminho para a imagem na pasta "sources" -->
-    <img src="sources/img_2.jpg" alt="Uma foto especial de nós dois">
+    <div class="image-container">
+        <img src="sources/img_2.jpg" alt="Uma foto especial de nós dois">
+    </div>
 
     <div id="contador">Calculando o tempo de amor...</div>
 
