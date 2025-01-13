@@ -9,22 +9,29 @@
     <!-- Link para o CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <h1>Krug e Bela</h1>
-    
+<body>    
     <!-- Imagem -->
     <div class="image-container">
-        <img src="sources/img_0.jpg" alt="Uma foto especial de nós dois">
+        <img src="sources/img_0.jpg" alt="Tutchucos">
     </div>
+
+    <h1>Krug e Bela</h1>
+    <p>Amor, cada dia ao seu lado é uma nova aventura. Estou tão feliz por estarmos juntos!</p>
+
+    <hr id="sep-line">
+
+    <!-- Texto fixo "Juntos há" -->
+    <div id="juntos">Juntos há</div>
 
     <!-- Contador -->
     <div id="contador">Calculando o tempo de amor...</div>
 
-    <!-- Código Embed do YouTube -->
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/_ruEj-XK1lA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-
-    <p>Amor, cada dia ao seu lado é uma nova aventura. Estou tão feliz por estarmos juntos!</p>
+    <div class="audio-container">
+        <audio id="musica" controls autoplay muted>
+            <source src="sources/snd_0.mp3" type="audio/mp3">
+            Seu navegador não suporta o elemento de áudio.
+        </audio>
+    </div>
 
     <!-- Link para o JavaScript -->
     <script src="scripts.js"></script>
