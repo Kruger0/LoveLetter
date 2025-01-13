@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Krug e Bela</title>
-    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+    <!-- Link para o Google Fonts para importar a fonte Open Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Patrick Hand', cursive, Arial, sans-serif;
+            font-family: 'Open Sans', sans-serif;
             background-color: #000;
             color: #fff;
             text-align: center;
@@ -21,8 +22,8 @@
         #contador {
             font-size: 1.5em;
             margin: 20px 0;
-            white-space: nowrap; /* Impede a quebra de linha */
-            display: inline-block; /* Faz com que o texto não quebre */
+            white-space: nowrap;
+            display: inline-block;
         }
         img {
             max-width: 100%;
@@ -38,7 +39,9 @@
 </head>
 <body>
     <h1>Krug e Bela</h1>
-    <img src="image1.png" alt="Uma foto especial de nós dois">
+    
+    <!-- Caminho para a imagem na pasta "sources" -->
+    <img src="sources/image1.png" alt="Uma foto especial de nós dois">
 
     <div id="contador">Calculando o tempo de amor...</div>
 
