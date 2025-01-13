@@ -1,100 +1,48 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Krug e Bela</title>
-    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Patrick Hand', cursive, Arial, sans-serif;
-            background-color: #000;
-            color: #fff;
-            text-align: center;
-            margin: 0;
-            padding: 20px;
-        }
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-        #contador {
-            font-size: 1.5em;
-            margin: 20px 0;
-            white-space: nowrap; /* Impede a quebra de linha */
-            display: inline-block; /* Faz com que o texto não quebre */
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            margin-top: 20px;
-        }
-        p {
-            font-size: 1.2em;
-            margin-top: 20px;
-        }
-    </style>
-</head>
-<body>
-    <h1>Krug e Bela</h1>
-    <img src="image1.png" alt="Uma foto especial de nós dois">
+<script>
+    const startDate = new Date('2024-05-05');
 
-    <div id="contador">Calculando o tempo de amor...</div>
+    function updateCounter() {
+        const today = new Date();
+        const diff = today - startDate;
+        const title = "Juntos há";
 
-    <p>Amor, cada dia ao seu lado é uma nova aventura. Estou tão feliz por estarmos juntos!</p>
-
-    <script>
-        const startDate = new Date('2024-05-05'); // Data de início
-
-        function updateCounter() {
-            const today = new Date();
-            let years = today.getFullYear() - startDate.getFullYear();
-            let months = today.getMonth() - startDate.getMonth();
-            let days = today.getDate() - startDate.getDate();
-
-            // Corrige a contagem de meses e anos
-            if (months < 0) {
-                years--;
-                months += 12;
-            }
-            if (days < 0) {
-                const previousMonth = new Date(today.getFullYear(), today.getMonth(), 0);
-                days += previousMonth.getDate();
-                months--;
-            }
-
-            // Calcula as horas, minutos e segundos
-            const diff = today - startDate;
-            const sec = Math.floor(diff / 1000); // Total de segundos
-            const min = Math.floor(sec / 60);   // Total de minutos
-            const remainHou = Math.floor((sec / 3600) % 24); // Horas restantes
-            const remainMin = min % 60;         // Minutos restantes após horas
-            const remainSec = sec % 60;         // Segundos restantes após minutos
-
-            // Verifica se já passou algum tempo desde a data de início
-            if (years <= 0 && months <= 0 && days <= 0) {
-                document.getElementById('contador').innerText = "Ainda não começou!";
-                return;
-            }
-
-            // Monta o texto do contador
-            let counterText = "Juntos há ";
-            if (years > 0) {
-                counterText += `${years} ${years === 1 ? 'ano' : 'anos'}, `;
-            }
-            counterText += `${months} ${months === 1 ? 'mês' : 'meses'}, `;
-            counterText += `${days} ${days === 1 ? 'dia' : 'dias'}, `;
-            counterText += `${remainHou} ${remainHou === 1 ? 'hora' : 'horas'}, `;
-            counterText += `${remainMin} ${remainMin === 1 ? 'minuto' : 'minutos'} e `;
-            counterText += `${remainSec} ${remainSec === 1 ? 'segundo' : 'segundos'}!`;
-
-            // Atualiza o texto do contador
-            document.getElementById('contador').innerText = counterText;
+        // Verifica se a data de início já passou
+        if (diff < 0) {
+            document.getElementById('contador').innerText = title;
+            return; // Sai da função se a data ainda não chegou
         }
 
-        setInterval(updateCounter, 1000); // Atualiza o contador a cada segundo
-        updateCounter(); // Atualiza imediatamente ao carregar
-    </script>
-</body>
-</html>
+        const sec = Math.floor(diff / 1000); // Total de segundos
+        const min = Math.floor(sec / 60);   // Total de minutos
+        const hou = Math.floor(min / 60);   // Total de horas
+        const day = Math.floor(hou / 24);   // Total de dias
+        const yea = Math.floor(day / 365);  // Anos (aproximando com 365 dias/ano)
+        const mon = Math.floor((day % 365) / 30); // Meses restantes (aproximando com 30 dias/mês)
+        const remainDay = day % 30;         // Dias restantes após meses
+        const remainHou = hou % 24;         // Horas restantes após dias
+        const remainMin = min % 60;         // Minutos restantes após horas
+        const remainSec = sec % 60;         // Segundos restantes após minutos
+
+        // Monta o texto do contador
+        let counterText = `${title} `;
+        
+        // Exibe anos apenas se pelo menos 1 ano tiver passado
+        if (yea >= 1) {
+            counterText += `${yea} ${yea === 1 ? 'ano' : 'anos'}, `;
+        }
+
+        counterText += `
+            ${mon} ${mon === 1 ? 'mês' : 'meses'}, 
+            ${remainDay} ${remainDay === 1 ? 'dia' : 'dias'}, 
+            ${remainHou} ${remainHou === 1 ? 'hora' : 'horas'}, 
+            ${remainMin} ${remainMin === 1 ? 'minuto' : 'minutos'} e 
+            ${remainSec} ${remainSec === 1 ? 'segundo' : 'segundos'}!
+        `;
+
+        // Atualiza o contador na página
+        document.getElementById('contador').innerText = counterText;
+    }
+
+    setInterval(updateCounter, 1000); // Atualiza o contador a cada segundo
+    updateCounter(); // Chama a função imediatamente para inicializar
+</script>
