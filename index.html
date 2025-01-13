@@ -5,28 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Krug e Bela</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./sources/styles.css">
+    <script src="./sources/script.js"></script>
 </head>
-<body>    
-    <!-- Imagem -->
-    <div class="image-container">
-        <img src="sources/img_0.jpg" alt="Tutchucos">
+<body>   
+
+    <!-- Carrocel -->
+    <div class="slider">
+        <div class="list">
+            <div class="item">
+                <img src="./public/img_0.jpg" alt="">
+            </div>
+            <div class="item">
+                <img src="./public/img_1.jpg" alt="">
+            </div>
+            <div class="item">
+                <img src="./public/img_2.jpg" alt="">
+            </div>
+            <div class="item">
+                <img src="./public/img_3.jpg" alt="">
+            </div>
+            <div class="item">
+                <img src="./public/img_4.jpg" alt="">
+            </div>
+            <div class="item">
+                <img src="./public/img_5.jpg" alt="">
+            </div>
+            <div class="item">
+                <img src="./public/img_6.jpg" alt="">
+            </div>
+            <div class="item">
+                <img src="./public/img_7.jpg" alt="">
+            </div>
+        </div>
+
+        <div class="buttons">
+            <button id="prev">◀</button>
+            <button id="next">▶</button>
+        </div>
+
+        <ul class="dots">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
     </div>
 
     <h1>Krug e Bela</h1>
 
+    <!-- Contador -->
     <div id="juntos">Juntos há:</div>
     <div id="contador">Calculando o tempo de amor...</div>
 
     <p id="heart">
         ❤️❤️❤️
     </p>
-    
+
     <hr id="sep-line">
 
     <div class="audio-container">
         <audio id="musica" controls autoplay muted>
-            <source src="sources/snd_0.mp3" type="audio/mp3">
+            <source src="./public/snd_0.mp3" type="audio/mp3">
         </audio>
     </div>
 
@@ -51,6 +95,5 @@
         Eu te amo! Obrigado por tudo que você fez, por tudo que faz, e por tudo que irá fazer.
     </p>
     
-    <script src="scripts.js"></script>
 </body>
 </html>
