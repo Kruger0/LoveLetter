@@ -51,9 +51,10 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(updateCounter, 1000); // Atualiza o contador a cada segundo
     updateCounter(); // Atualiza imediatamente ao carregar
 
+
     // Ajusta o volume do áudio (de 0.0 a 1.0)
     const audioElement = document.getElementById('musica');
-    audioElement.volume = 0.5;  // Volume inicial (50% do volume máximo)
+    audioElement.volume = 0.6;  // Volume inicial (50% do volume máximo)
     
     // Remove o mudo após o carregamento
     audioElement.muted = false;

@@ -1,6 +1,6 @@
 body {
     font-family: 'Open Sans', sans-serif;
-    background-color: #05051a;
+    background-color: #050510;
     color: #ffffff;
     text-align: center;
     margin: 0;
@@ -12,31 +12,17 @@ h1 {
     margin-bottom: 10px;
 }
 
-#sep-line {
-    border: none;               /* Remove a borda padrão */
-    height: 2px;                /* Define a altura da linha */
-    background-color: #fff;    /* Cor da linha */
-    margin: 20px 0;             /* Espaço acima e abaixo da linha */
-    width: 50%;                 /* Largura da linha (50% da largura do contêiner) */
-    max-width: 600px;           /* Largura máxima da linha */
-    margin-left: auto;          /* Centraliza a linha */
-    margin-right: auto;         /* Centraliza a linha */
+p {
+    font-size: 1.2em;
+    margin-top: 20px;
 }
 
-
-#juntos {
-    font-weight: bold;
-    font-size: 0.8em;
-    color: #5a5a5a; /* Cor para o texto "Juntos há" */
-    margin-bottom: 10px; /* Espaço entre os elementos */
-}
-
-#contador {
-    font-size: 1.5em;
-    margin: 20px 0;
-    white-space: nowrap;
-    display: inline-block;
-    margin-bottom: 10px; /* Espaço entre os elementos */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+    object-fit: cover;
 }
 
 .image-container {
@@ -46,12 +32,9 @@ h1 {
     overflow: hidden;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    margin-top: 20px;
-    object-fit: cover;
+audio {
+    width: 100%; /* Faz com que o áudio ocupe 100% do contêiner */
+    display: block; /* Exibe o áudio como bloco */
 }
 
 .audio-container {
@@ -59,16 +42,42 @@ img {
     margin: 20px auto; /* Centraliza o contêiner e dá espaçamento acima e abaixo */
 }
 
-/* Áudio */
-audio {
-    width: 100%; /* Faz com que o áudio ocupe 100% do contêiner */
-    display: block; /* Exibe o áudio como bloco */
+#sep-line {
+    border: none;               /* Remove a borda padrão */
+    height: 2px;                /* Define a altura da linha */
+    background-color: #fff;    /* Cor da linha */
+    margin: 10px 0;             /* Espaço acima e abaixo da linha */
+    width: 80%;                 /* Largura da linha (50% da largura do contêiner) */
+    max-width: 600px;           /* Largura máxima da linha */
+    margin-left: auto;          /* Centraliza a linha */
+    margin-right: auto;         /* Centraliza a linha */
 }
 
+#juntos {
+    font-weight: bold;
+    font-size: 0.9em;
+    color: #b6b6b6; /* Cor para o texto "Juntos há" */
+    margin-top: 10px;
+}
 
-p {
-    font-size: 1.2em;
-    margin-top: 20px;
+#heart {
+    font-size: 2.0em;
+    margin: 0px 0;
+}
+
+#contador {
+    font-size: 1.5em;
+    margin: 0px 0;
+    white-space: normal; /* Permite quebra de linha */
+    word-wrap: break-word; /* Quebra palavras longas quando necessário */
+    display: inline-block;
+    word-break: break-word; /* Também quebra palavras que são muito longas para o container */
+}
+
+#texto {
+    white-space: normal; /* Faz o texto quebrar automaticamente sem considerar as quebras de linha manuais */
+    word-wrap: break-word; /* Quebra as palavras longas se necessário */
+    margin-bottom: 20px;
 }
 
 @media (max-width: 768px) {
