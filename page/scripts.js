@@ -1,53 +1,53 @@
-// script.js
+document.addEventListener('DOMContentLoaded', function() {
+    const startDate = new Date('2024-05-05'); // Data de início
+    const contador = document.getElementById('contador'); // Pegando o elemento contador
 
-const images = document.querySelectorAll('.carousel-images img');
-const indicators = document.querySelector('.carousel-indicators');
-let currentIndex = 0;
+    function updateCounter() {
+        const today = new Date();
+        let years = today.getFullYear() - startDate.getFullYear();
+        let months = today.getMonth() - startDate.getMonth();
+        let days = today.getDate() - startDate.getDate();
 
-function showImage(index) {
-    document.querySelector('.carousel-images').style.transform = `translateX(-${index * 100}%)`;
-    const dots = document.querySelectorAll('.carousel-indicators span');
-    dots.forEach(dot => dot.classList.remove('active'));
-    dots[index].classList.add('active');
-}
-
-function createIndicators() {
-    images.forEach((image, index) => {
-        const dot = document.createElement('span');
-        dot.addEventListener('click', () => {
-            currentIndex = index;
-            showImage(currentIndex);
-        });
-        indicators.appendChild(dot);
-    });
-    showImage(currentIndex); // Exibe a primeira imagem inicialmente
-}
-
-function autoAdvance() {
-    currentIndex = (currentIndex + 1) % images.length;
-    showImage(currentIndex);
-}
-
-setInterval(autoAdvance, 3000);
-
-let touchStartX = 0;
-
-document.querySelector('.carousel-container').addEventListener('touchstart', (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-});
-
-document.querySelector('.carousel-container').addEventListener('touchend', (e) => {
-    const touchEndX = e.changedTouches[0].screenX;
-    const diff = touchStartX - touchEndX;
-
-    if (Math.abs(diff) > 50) {
-        if (diff > 0) {
-            currentIndex = (currentIndex + 1) % images.length;
-        } else {
-            currentIndex = (currentIndex - 1 + images.length) % images.length;
+        // Corrige a contagem de meses e anos
+        if (months < 0) {
+            years--;
+            months += 12;
         }
-        showImage(currentIndex);
-    }
-});
+        if (days < 0) {
+            const previousMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+            days += previousMonth.getDate();
+            months--;
+        }
 
-createIndicators();
+        // Calcula as horas, minutos e segundos
+        const diff = today - startDate;
+        const sec = Math.floor(diff / 1000); // Total de segundos
+        const min = Math.floor(sec / 60);   // Total de minutos
+        const remainHou = Math.floor((sec / 3600) % 24); // Horas restantes
+        const remainMin = min % 60;         // Minutos restantes após horas
+        const remainSec = sec % 60;         // Segundos restantes após minutos
+
+        // Verifica se já passou algum tempo desde a data de início
+        if (years <= 0 && months <= 0 && days <= 0) {
+            contador.innerText = "Ainda não começou!";
+            return;
+        }
+
+        // Monta o texto do contador
+        let counterText = "Juntos há ";
+        if (years > 0) {
+            counterText += `${years} ${years === 1 ? 'ano' : 'anos'}, `;
+        }
+        counterText += `${months} ${months === 1 ? 'mês' : 'meses'}, `;
+        counterText += `${days} ${days === 1 ? 'dia' : 'dias'}, `;
+        counterText += `${remainHou} ${remainHou === 1 ? 'hora' : 'horas'}, `;
+        counterText += `${remainMin} ${remainMin === 1 ? 'minuto' : 'minutos'} e `;
+        counterText += `${remainSec} ${remainSec === 1 ? 'segundo' : 'segundos'}!`;
+
+        // Atualiza o texto do contador
+        contador.innerText = counterText;
+    }
+
+    setInterval(updateCounter, 1000); // Atualiza o contador a cada segundo
+    updateCounter(); // Atualiza imediatamente ao carregar
+});
