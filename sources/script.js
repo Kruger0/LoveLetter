@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Contador ----------------------------------------
 
-    const startDate = new Date('2024-05-05'); // Data de início
+    const startDate = new Date('2024-05-05T00:00:00'); // Data de início
     const counter = document.getElementById('contador'); // Pegando o elemento contador
     
     // Função para verificar se um ano é bissexto
@@ -81,15 +81,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Atualiza o contador a cada segundo
     setInterval(updateCounter, 1000);
     updateCounter(); // Chama imediatamente ao carregar a página
-
-    // Audio ----------------------------------------
-
-    // Ajusta o volume do áudio (de 0.0 a 1.0)
-    const audioElement = document.getElementById('musica');
-    audioElement.volume = 0.75;  // Volume inicial (50% do volume máximo)
-    
-    // Remove o mudo após o carregamento
-    audioElement.muted = false;
 
     // Slider ----------------------------------------
 

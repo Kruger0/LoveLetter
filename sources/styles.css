@@ -44,22 +44,21 @@ body {
 .buttons {
     position: absolute;
     display: flex;
-    top: 45%;
-    left: 3%;
-    width: 94%;
+    top: 40%;
+    width: 100%;
     text-align: center center;
     justify-content: space-between;
 }
 .buttons button {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0);
     color: #fff;
     border: none;
     font-family: "Manrope", serif;
     font-weight: bold;
-    font-size: 2em;
+    font-size: 3em;
 }
 .dots {
     position: absolute;
