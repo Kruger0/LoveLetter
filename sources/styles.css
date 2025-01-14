@@ -13,11 +13,12 @@ body {
     background-color: #050510;
     color: #ffffff;
     text-align: center;
-    margin: 15px;
+    margin: 20px;
 }
 .slider {
-    width: 90dvw;
-    height: 500px;
+    width: 90vw;
+    height: auto;
+    aspect-ratio: 0.9;
     position: relative;
     overflow: hidden;
     border-radius: 20px;
@@ -31,8 +32,8 @@ body {
     transition: 1s;
 }
 .list img {
-    width: 90dvw;
-    max-width: 100dvw;
+    width: 90vw;
+    max-width: 100vw;
     height: 100%;
     object-fit: cover;
     object-position: center;
@@ -55,7 +56,6 @@ body {
     border: none;
     font-family: monospace;
     font-weight: bold;
-    font-size: 2.0em;
 }
 .dots {
     position: absolute;
@@ -120,11 +120,4 @@ audio {
 #texto {
     white-space: normal; /* Faz o texto quebrar automaticamente sem considerar as quebras de linha manuais */
     word-wrap: break-word; /* Quebra as palavras longas se necessário */
-}
-
-@media screen and (max-width: 768px) {
-    .slider {
-        height: auto;
-        aspect-ratio: 0.9;
-    }
 }
