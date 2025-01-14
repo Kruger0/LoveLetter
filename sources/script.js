@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Ajusta o volume do áudio (de 0.0 a 1.0)
     const audioElement = document.getElementById('musica');
-    audioElement.volume = 0.6;  // Volume inicial (50% do volume máximo)
+    audioElement.volume = 0.75;  // Volume inicial (50% do volume máximo)
     
     // Remove o mudo após o carregamento
     audioElement.muted = false;
