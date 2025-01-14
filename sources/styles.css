@@ -5,8 +5,8 @@
 }
 
 * {
-    margin: 0;
-    padding: 0;   
+    /*margin: 0;
+    padding: 0;*/   
 }
 
 body {
@@ -23,26 +23,22 @@ body {
     margin: 20;
     position: relative;
     overflow: hidden;
-    border-radius: 15px;
 }
-
 .list {
     position: absolute;
+    display: flex;
     top: 0;
     left: 0;
-    right: 0;
     height: 100%;
-    display: flex;
     width: max-content;
     transition: 1s;
 }
-
 .list img {
     width: 1300px;
     max-width: 100vw;
     height: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: center center;
     border-radius: 15px;
 }
 
