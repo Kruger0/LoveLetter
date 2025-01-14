@@ -4,12 +4,12 @@ body {
     color: #ffffff;
     text-align: center;
     margin: 0;
-    padding: 20px;
+    /*padding: 20px;*/
 }
 
 .slider {
     width: 100%;
-    max-width: 1300px;
+    /*max-width: 1300px;*/
     height: 500px;
     margin: auto;
     position: relative;
