@@ -1,56 +1,88 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const startDate = new Date('2024-05-05'); // Data de início
-    const contador = document.getElementById('contador'); // Pegando o elemento contador
 
+    // Contador ----------------------------------------
+
+    const startDate = new Date('2024-05-05'); // Data de início
+    const counter = document.getElementById('contador'); // Pegando o elemento contador
+    
+    // Função para verificar se um ano é bissexto
+    function isLeapYear(year) {
+        return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+    }
+    
     function updateCounter() {
         const today = new Date();
-        let years = today.getFullYear() - startDate.getFullYear();
-        let months = today.getMonth() - startDate.getMonth();
-        let days = today.getDate() - startDate.getDate();
-
-        // Corrige a contagem de meses e anos
-        if (months < 0) {
-            years--;
-            months += 12;
-        }
-        if (days < 0) {
-            const previousMonth = new Date(today.getFullYear(), today.getMonth(), 0);
-            days += previousMonth.getDate();
-            months--;
-        }
-
-        // Calcula as horas, minutos e segundos
+        
+        // Calcula a diferença total entre a data de início e o dia de hoje em milissegundos
         const diff = today - startDate;
-        const sec = Math.floor(diff / 1000); // Total de segundos
-        const min = Math.floor(sec / 60);   // Total de minutos
-        const remainHou = Math.floor((sec / 3600) % 24); // Horas restantes
-        const remainMin = min % 60;         // Minutos restantes após horas
-        const remainSec = sec % 60;         // Segundos restantes após minutos
-
-        // Verifica se já passou algum tempo desde a data de início
-        if (years <= 0 && months <= 0 && days <= 0) {
-            contador.innerText = "Ainda não começou!";
+        const totalSeconds = Math.floor(diff / 1000);  // Convertendo para segundos
+    
+        // Cálculos considerando anos bissextos
+        const totalDays = Math.floor(totalSeconds / (60 * 60 * 24)); // Total de dias
+    
+        let years = 0;
+        let months = 0;
+        let days = totalDays;
+    
+        // Calcula os anos bissextos e comuns
+        let tempStartDate = new Date(startDate); // Cria uma cópia da data de início para não alterá-la diretamente
+        while (true) {
+            const yearDays = isLeapYear(tempStartDate.getFullYear()) ? 366 : 365;
+            if (days >= yearDays) {
+                years++;
+                days -= yearDays;
+                tempStartDate.setFullYear(tempStartDate.getFullYear() + 1);
+            } else {
+                break;
+            }
+        }
+    
+        // Calcula os meses, considerando o mês atual com base na data de início
+        const monthsInYear = [31, (isLeapYear(today.getFullYear()) ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; // Considerando os meses com 28 ou 29 dias
+        while (days >= monthsInYear[tempStartDate.getMonth()]) {
+            days -= monthsInYear[tempStartDate.getMonth()];
+            months++;
+            tempStartDate.setMonth(tempStartDate.getMonth() + 1);
+            if (tempStartDate.getMonth() === 12) {
+                tempStartDate.setMonth(0);
+            }
+        }
+    
+        // Calcula as horas, minutos e segundos restantes
+        const hours = Math.floor(totalSeconds / (60 * 60) % 24);
+        const minutes = Math.floor(totalSeconds / 60 % 60);
+        const seconds = totalSeconds % 60;
+    
+        // Verifica se a data de início é no futuro
+        if (today < startDate) {
+            counter.innerText = "Ainda não começou!";
             return;
         }
+    
         // Monta o texto do contador
-        let counterText = ""; // Removendo "Juntos há"
+        let counterText = "";
         if (years > 0) {
             counterText += `${years} ${years === 1 ? 'ano' : 'anos'}, `;
         }
-        counterText += `${months} ${months === 1 ? 'mês' : 'meses'}, `;
-        counterText += `${days} ${days === 1 ? 'dia' : 'dias'}, `;
-        counterText += `${remainHou} ${remainHou === 1 ? 'hora' : 'horas'}, `;
-        counterText += `${remainMin} ${remainMin === 1 ? 'minuto' : 'minutos'} e `;
-        counterText += `${remainSec} ${remainSec === 1 ? 'segundo' : 'segundos'}!`;
-
-        // Atualiza o texto do contador
-        contador.innerText = counterText;
-
+        if (months > 0) {
+            counterText += `${months} ${months === 1 ? 'mês' : 'meses'}, `;
+        }
+        if (days > 0) {
+            counterText += `${days} ${days === 1 ? 'dia' : 'dias'}, `;
+        }
+        counterText += `${hours} ${hours === 1 ? 'hora' : 'horas'}, `;
+        counterText += `${minutes} ${minutes === 1 ? 'minuto' : 'minutos'} e `;
+        counterText += `${seconds} ${seconds === 1 ? 'segundo' : 'segundos'}.`;
+    
+        // Atualiza o texto no contador
+        counter.innerText = counterText;
     }
+    
+    // Atualiza o contador a cada segundo
+    setInterval(updateCounter, 1000);
+    updateCounter(); // Chama imediatamente ao carregar a página
 
-    setInterval(updateCounter, 1000); // Atualiza o contador a cada segundo
-    updateCounter(); // Atualiza imediatamente ao carregar
-
+    // Audio ----------------------------------------
 
     // Ajusta o volume do áudio (de 0.0 a 1.0)
     const audioElement = document.getElementById('musica');
