@@ -11,7 +11,7 @@ body {
 }
 
 .slider {
-    width: clamp(500px, 100vw, 1300px);
+    width: 100%;
     height: 500px;
     margin: auto;
     position: relative;
