@@ -1,12 +1,11 @@
 *,
 *::before,
 *::after {
-    box_sizing: border-box;
+    box-sizing: border-box;
 }
-
 * {
-    /*margin: 0;
-    padding: 0;*/   
+    margin: 0px;
+    padding: 0px; 
 }
 
 body {
@@ -14,15 +13,14 @@ body {
     background-color: #050510;
     color: #ffffff;
     text-align: center;
-    margin: 20;
+    margin: 15px;
 }
-
 .slider {
-    width: 100%;
+    width: 90dvw;
     height: 500px;
-    margin: 20;
     position: relative;
     overflow: hidden;
+    border-radius: 20px;
 }
 .list {
     position: absolute;
@@ -30,28 +28,24 @@ body {
     top: 0;
     left: 0;
     height: 100%;
-    width: max-content;
     transition: 1s;
 }
 .list img {
-    width: 1300px;
-    max-width: 100vw;
+    width: 90dvw;
+    max-width: 100dvw;
     height: 100%;
     object-fit: cover;
-    object-position: center center;
-    border-radius: 15px;
+    object-position: center;
 }
-
-
 .buttons {
     position: absolute;
+    display: flex;
     top: 45%;
     left: 5%;
     width: 90%;
-    display: flex;
+    text-align: center center;
     justify-content: space-between;
 }
-
 .buttons button {
     width: 50px;
     height: 50px;
@@ -61,53 +55,40 @@ body {
     border: none;
     font-family: monospace;
     font-weight: bold;
+    font-size: 2.0em;
 }
-
 .dots {
     position: absolute;
-    bottom: 10px;
-    color: #fff;
-    left: 0;
-    width: 100%;
-    margin: 0;
-    padding: 0;
     display: flex;
     justify-content: center;
+    bottom: 0px;
+    color: #fff;
+    width: 100%;
 }
-
 .dots li{
     list-style: none;
     width: 10px;
     height: 10px;
     background-color: #fff;
-    margin: 5vw;
+    margin: 3vw;
     border-radius: 20px;
     transition: 1s;
 }
-
 .dots li.active{
     width: 30px;
 }
-
 h1 {
     font-size: 2.5em;
     margin-bottom: 10px;
 }
-
 p {
     font-size: 1.2em;
     margin-top: 20px;
 }
 
-
 audio {
-    width: 100%; /* Faz com que o áudio ocupe 100% do contêiner */
-    display: block; /* Exibe o áudio como bloco */
-}
-
-.audio-container {
-    width: 80%; /* Define a largura desejada do player */
-    margin: 20px auto; /* Centraliza o contêiner e dá espaçamento acima e abaixo */
+    width: 80vw;
+    margin: 20px auto;
 }
 
 #sep-line {
@@ -120,34 +101,25 @@ audio {
     margin-left: auto;          /* Centraliza a linha */
     margin-right: auto;         /* Centraliza a linha */
 }
-
 #juntos {
     font-weight: bold;
     font-size: 0.9em;
     color: #b6b6b6; /* Cor para o texto "Juntos há" */
     margin-top: 10px;
 }
-
 #heart {
     font-size: 2.0em;
-    margin: 0px 0;
+    margin: 0px;
 }
-
 #contador {
     font-size: 1.5em;
-    margin: 0px 0;
     width: 100%;
     text-align: center;
     white-space: normal; /* Permite quebra de linha */
-    word-wrap: break-word; /* Quebra palavras longas quando necessário */
-    display: inline-block;
-    word-break: break-word; /* Também quebra palavras que são muito longas para o container */
 }
-
 #texto {
     white-space: normal; /* Faz o texto quebrar automaticamente sem considerar as quebras de linha manuais */
     word-wrap: break-word; /* Quebra as palavras longas se necessário */
-    margin-bottom: 20px;
 }
 
 @media screen and (max-width: 768px) {
