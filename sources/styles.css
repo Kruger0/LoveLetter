@@ -9,7 +9,7 @@
 }
 
 body {
-    font-family: "Playwrite AU SA", serif;
+    font-family: "Playwrite IN", serif;
     background-color: #050510;
     color: #ffffff;
     text-align: center;
@@ -57,7 +57,8 @@ body {
     background-color: rgba(255, 255, 255, 0);
     color: #fff;
     border: none;
-    font-family: "Poppins", serif;
+    font-family: "Manrope", serif;
+    font-weight: bold;
     font-size: 2em;
 }
 .dots {
