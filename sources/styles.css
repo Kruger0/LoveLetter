@@ -159,12 +159,4 @@ audio {
         height: auto;
         aspect-ratio: 0.9;
     }
-    .buttons button {
-        width: 40px;
-        height: 40px;
-    }
-    .dots li {
-        width: 8px;
-        height: 8px;
-    }
 }
