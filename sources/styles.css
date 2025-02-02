@@ -95,12 +95,17 @@ audio {
     margin: 20px auto;
 }
 
+#poema p {
+    margin: 40px auto;
+}
+
 #sep-line {
     border: none;               /* Remove a borda padrão */
     height: 2px;                /* Define a altura da linha */
     background-color: #fff;    /* Cor da linha */
     width: 90%;                 /* Largura da linha (50% da largura do contêiner) */
-    margin: 20px auto;
+    margin: 0 auto;
+    margin-bottom: 40px;
 }
 #juntos {
     font-weight: bold;
@@ -108,7 +113,11 @@ audio {
 }
 #heart {
     font-size: 3.0em;
-    margin: 0px;
+    margin: -40px;
+}
+#heart_bot {
+    font-size: 3.0em;
+    margin-top: -40px;
 }
 #contador {
     font-size: 1.2em;
