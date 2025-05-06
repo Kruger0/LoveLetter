@@ -1,88 +1,75 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    // Contador ----------------------------------------
+    // Date Counter ===========================================================
 
-    const startDate = new Date('2024-05-05T00:00:00'); // Data de início
-    const counter = document.getElementById('contador'); // Pegando o elemento contador
+    const startDate = new Date('2024-05-05T00:00:00');
+    const counter = document.getElementById('date-counter');
     
-    // Função para verificar se um ano é bissexto
-    function isLeapYear(year) {
-        return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
-    }
-    
-    function updateCounter() {
-        const today = new Date();
+    function getDateDiff() {
+        const currentDate = new Date();
         
-        // Calcula a diferença total entre a data de início e o dia de hoje em milissegundos
-        const diff = today - startDate;
-        const totalSeconds = Math.floor(diff / 1000);  // Convertendo para segundos
+        // Get date difference in milliseconds
+        const diff = currentDate - startDate;
+ 
+        // Calculate seconds, minutes, hours
+        const sec = Math.floor((diff / 1000) % 60);
+        const min = Math.floor((diff / (1000 * 60)) % 60);
+        const hou = Math.floor((diff / (1000 * 60 * 60)) % 24);
     
-        // Cálculos considerando anos bissextos
-        const totalDays = Math.floor(totalSeconds / (60 * 60 * 24)); // Total de dias
-    
+        let tempDate = new Date(startDate);
+
+        // Count years
         let years = 0;
-        let months = 0;
-        let days = totalDays;
-    
-        // Calcula os anos bissextos e comuns
-        let tempStartDate = new Date(startDate); // Cria uma cópia da data de início para não alterá-la diretamente
         while (true) {
-            const yearDays = isLeapYear(tempStartDate.getFullYear()) ? 366 : 365;
-            if (days >= yearDays) {
+            const nextYear = new Date(tempDate);
+            nextYear.setFullYear(nextYear.getFullYear() + 1);
+            
+            if (nextYear <= currentDate) {
                 years++;
-                days -= yearDays;
-                tempStartDate.setFullYear(tempStartDate.getFullYear() + 1);
+                tempDate = nextYear;
             } else {
                 break;
             }
         }
-    
-        // Calcula os meses, considerando o mês atual com base na data de início
-        const monthsInYear = [31, (isLeapYear(today.getFullYear()) ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; // Considerando os meses com 28 ou 29 dias
-        while (days >= monthsInYear[tempStartDate.getMonth()]) {
-            days -= monthsInYear[tempStartDate.getMonth()];
-            months++;
-            tempStartDate.setMonth(tempStartDate.getMonth() + 1);
-            if (tempStartDate.getMonth() === 12) {
-                tempStartDate.setMonth(0);
+        
+        // Count months
+        let months = 0;
+        while (true) {
+            const nextMonth = new Date(tempDate);
+            nextMonth.setMonth(nextMonth.getMonth() + 1);
+            
+            if (nextMonth <= currentDate) {
+                months++;
+                tempDate = nextMonth;
+            } else {
+                break;
             }
         }
-    
-        // Calcula as horas, minutos e segundos restantes
-        const hours = Math.floor(totalSeconds / (60 * 60) % 24);
-        const minutes = Math.floor(totalSeconds / 60 % 60);
-        const seconds = totalSeconds % 60;
-    
-        // Verifica se a data de início é no futuro
-        if (today < startDate) {
-            counter.innerText = "Ainda não começou!";
-            return;
-        }
+        
+        // Calculate remaining days
+        const days = Math.floor((currentDate - tempDate) / (1000 * 60 * 60 * 24));
     
         // Monta o texto do contador
-        let counterText = "";
-        if (years > 0) {
-            counterText += `${years} ${years === 1 ? 'ano' : 'anos'}, `;
-        }
-        if (months > 0) {
-            counterText += `${months} ${months === 1 ? 'mês' : 'meses'}, `;
-        }
-        if (days > 0) {
-            counterText += `${days} ${days === 1 ? 'dia' : 'dias'}, `;
-        }
-        counterText += `${hours} ${hours === 1 ? 'hora' : 'horas'}, `;
-        counterText += `${minutes} ${minutes === 1 ? 'minuto' : 'minutos'} e `;
-        counterText += `${seconds} ${seconds === 1 ? 'segundo' : 'segundos'}.`;
+        let dateDiff = "";
+
+        if (years > 0)  {dateDiff += `${years} ${years > 1 ?   'anos'     : 'ano'}, `;}
+        if (months > 0) {dateDiff += `${months} ${months > 1 ? 'meses'    : 'mês'}, `;}
+        if (days > 0)   {dateDiff += `${days} ${days > 1 ?     'dias'     : 'dia'}, `;}
+        if (hou > 0)    {dateDiff += `${hou} ${hou > 1 ?       'horas'    : 'hora'}, `;}
+        if (min > 0)    {dateDiff += `${min} ${min > 1 ?       'minutos'  : 'minuto'} `;}
+        if (sec > 0)    {dateDiff += `e ${sec} ${sec > 1 ?     'segundos' : 'segundo'}`;}
     
         // Atualiza o texto no contador
-        counter.innerText = counterText;
+        counter.innerText = dateDiff;
     }
     
-    // Atualiza o contador a cada segundo
-    setInterval(updateCounter, 1000);
-    updateCounter(); // Chama imediatamente ao carregar a página
+    // Automatic call
+    setInterval(getDateDiff, 1000);
 
-    // Slider ----------------------------------------
+    // Page reload call
+    getDateDiff()
+
+    // Slider ===========================================================
 
     let list    = document.querySelector('.slider .list')
     let items   = document.querySelectorAll('.slider .list .item')

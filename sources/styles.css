@@ -9,7 +9,7 @@
 }
 
 body {
-    font-family: "Playwrite IN", serif;
+    font-family: 'Playwrite IN', serif;
     background-color: #050510;
     color: #ffffff;
     text-align: center;
@@ -57,7 +57,7 @@ body {
     background-color: rgba(255, 255, 255, 0);
     color: #fff;
     border: none;
-    font-family: "Manrope", serif;
+    font-family: 'Manrope', serif;
     font-weight: bold;
     font-size: 2.5em;
 }
@@ -96,19 +96,19 @@ audio {
     margin: 20px auto;
 }
 
-#poema p {
+#poem p {
     margin: 40px auto;
 }
 
 #sep-line {
     border: none;               /* Remove a borda padrão */
     height: 2px;                /* Define a altura da linha */
-    background-color: #fff;    /* Cor da linha */
+    background-color: #fff;   /* Cor da linha */
     width: 90%;                 /* Largura da linha (50% da largura do contêiner) */
     margin: 0 auto;
     margin-bottom: 40px;
 }
-#juntos {
+#date-header {
     font-weight: bold;
     color: #B0B0B0;
 }
@@ -120,7 +120,7 @@ audio {
     font-size: 3.0em;
     margin-top: -40px;
 }
-#contador {
+#date-counter {
     font-size: 1.2em;
     font-weight: bold;
 }
